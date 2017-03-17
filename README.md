@@ -128,9 +128,17 @@ https://github.com/Jopyth/MMM-Remote-Control/blob/master/MMM-Remote-Control.js#L
 
 # Choosing your youtube video
 
-Im using this video as an example : https://www.youtube.com/embed/H1Ej5qMqxxw?enablejsapi=1&autoplay=1
+To choose the youtube video set the config option `id`.
 
-notice `H1Ej5qMqxxw` ? , that's the thing that you will need to change. 
+```
+{
+  module: 'youtube',
+  position: 'lower_third',
+  config: {
+    id: "H1Ej5qMqxxw"
+  }
+}
+```
 
 # Fire it up
 

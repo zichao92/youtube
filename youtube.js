@@ -1,4 +1,8 @@
 Module.register("youtube",{
+    
+    defaults: {
+        id: "10ljZUY-E_A"
+    },
 
     start: function() {
         Log.info("Starting module: " + this.name);
@@ -39,7 +43,7 @@ Module.register("youtube",{
 
         var iframe = document.createElement("iframe");
         iframe.setAttribute("id", "my-video");
-        iframe.setAttribute("src", "https://www.youtube.com/embed/10ljZUY-E_A?enablejsapi=1&autoplay=1"); // change here for other youtube Videos! 
+        iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.config.id + "?enablejsapi=1&autoplay=1");
         iframe.setAttribute("frameborder", "0");
         iframe.setAttribute("type", "text/html");
 
