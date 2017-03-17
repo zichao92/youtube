@@ -117,8 +117,9 @@ This code can be found from line 178 onwards, im not too sure what's the exact l
             }
         }
     },
+```
 
-    ```
+
     If you are using Jopyth's older version of Remote Control , you have to add these few lines into your code:
 
 https://github.com/Jopyth/MMM-Remote-Control/blob/master/node_helper.js#L658-L676 , This is for node_helper.js
