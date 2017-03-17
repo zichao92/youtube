@@ -6,6 +6,7 @@ Module.register("youtube",{
 
     start: function() {
         Log.info("Starting module: " + this.name);
+        this.sendSocketNotification("CONNECT");
     },
 
     getStyles: function() {
@@ -28,6 +29,13 @@ Module.register("youtube",{
         }
         if (notification === "PLAY_VIDEO"){
             this.sendCommand("playVideo");
+        }
+    },
+    
+    socketNotificationReceived: function(notification, payload) {
+        if (notification === "NEW_YOUTUBE_ID"){
+            this.config.id = payload;
+            this.updateDom(1000);
         }
     },
     
