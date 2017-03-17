@@ -73,7 +73,7 @@ Example :
 ```
 
 # Configurating Jopyth's Remote Control module
-I was still using Jopyth's older version of Remote Control module as it appears to be more smoother as compared to his new version.
+I'm still using Jopyth's older version of Remote Control module as it appears to be smoother as compared to his new version.
 Nevertheless here's what you have to change if you are using Jopyth's modules:
 
 This code can be found from line 178 onwards, im not too sure what's the exact line but what you can do is hit crt+f and search for " 'show-all-button' ".
