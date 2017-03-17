@@ -2,7 +2,7 @@
 This is my first module contribution to the community of MagicMirror2!
 
 # Acknowledgement 
-I would like to thank Jopyth and Strawberry 3.141 for their guidance in this module. As of course, my buddy Huang Kai for teaching me the basics.
+I would like to thank Jopyth and Strawberry 3.141 for their guidance in this module. And of course, my buddy Huang Kai for teaching me the basics.
 This code was initially based on Michael's compliment module.
 
 #Prerequisites 
