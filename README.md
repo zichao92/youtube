@@ -139,5 +139,5 @@ Go to localhost:8080/remote.html#main-menu and press hide-all ( To play the vide
 #ScreenShots
 
 Here are some ScreenShots
-![demo] https://cloud.githubusercontent.com/assets/26163624/24041795/fa8aae7a-0b49-11e7-9815-97bb998d62a3.png
-![demo] https://cloud.githubusercontent.com/assets/26163624/24041811/067154dc-0b4a-11e7-84c1-e9d40c558f46.png
+![demo] (https://cloud.githubusercontent.com/assets/26163624/24041795/fa8aae7a-0b49-11e7-9815-97bb998d62a3.png)
+![demo] (https://cloud.githubusercontent.com/assets/26163624/24041811/067154dc-0b4a-11e7-84c1-e9d40c558f46.png)
