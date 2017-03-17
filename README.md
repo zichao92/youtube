@@ -21,10 +21,20 @@ For config.js , use the following code:
  ```
 		{
 			module: 'youtube',
-			position: 'lower_third' //used to be lower_third, keep it as module 5
+			position: 'lower_third', //used to be lower_third, keep it as module 5
+			config: {
+			id: "RvV3nn_de2k",
+			}
 		},
 ```
 For my youtube module, it's listed as the 5th module. If you dont know sequence of the module, start counting from the top.
+        
+	Only use the ID part of the youtube url.  Like this:
+
+        https://www.youtube.com/watch?v=RvV3nn_de2k
+
+        ID is the part after the =  RvV3nn_de2k
+
 
 Example :
 ```
@@ -68,7 +78,10 @@ Example :
 		},
 		{
 			module: 'youtube', //module 5
-			position: 'lower_third' //used to be lower_third, keep it as module 5
+			position: 'lower_third', //used to be lower_third, keep it as module 5
+			config: {
+			id: "RvV3nn_de2k"
+			}
 		},
 ```
 
