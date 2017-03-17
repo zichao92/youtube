@@ -39,7 +39,7 @@ Module.register("youtube",{
 
         var iframe = document.createElement("iframe");
         iframe.setAttribute("id", "my-video");
-        iframe.setAttribute("src", "https://www.youtube.com/embed/Duu9MgCvbFQ?enablejsapi=1&autoplay=1"); //  Space station : qzMQza8xZCc , power rangers : 5kIe6UZHSXw , FOXs news live : Duu9MgCvbFQ
+        iframe.setAttribute("src", "https://www.youtube.com/embed/10ljZUY-E_A?enablejsapi=1&autoplay=1"); // change here for other youtube Videos! 
         iframe.setAttribute("frameborder", "0");
         iframe.setAttribute("type", "text/html");
 

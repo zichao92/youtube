@@ -1,55 +1,137 @@
 # youtube
 This is my first module contribution to the community of MagicMirror2!
 
+# Acknowledgement 
+I would like to thank Michael Teeuw ,Jopyth and Strawberry 3.141 for their guidance in this module. As of course, my buddy Huang Kai for teaching me the basics.
+This code was initially based on Michael's compliment module.
+
+#Prerequisites 
+
+You have to install Jopyth's Remote Control module before you can start controlling the embedded youtube video. Here's the link to Jopyth's Remote module:
+https://github.com/Jopyth/MMM-Remote-Control
 
 # Installation
 
-A law was voted to force public companies to open some of their data to the public. If the RATP opened their data for years, some data like real-time timetable are not avaiable for the moment (they may arrive during 2017 (source RATP)).
-Until then, the only way to get real time data is to parse the RATP WAP website. A french developer (Pierre Grimaud) developed a custom API to interrogate this WAP website in a easy way.
-
-The API is available here and this module is based on this API: http://api-ratp.pierre-grimaud.fr
-
-
-# Installation 
-
-Clone the git in the /modules folder of MM and run the "npm install" command
+Navigate to MagicMirror's modules folder through your terminal window, execute `git clone https://github.com/zichao92/youtube.git`
 
 
 # Configuration 
 
-To get bus timetable, you'll need to specify the transport line, the station and the destination. These information will have to be specified in the configuration ([https://github.com/lgmorand/MMM-Ratp/blob/master/MMM-Ratp.js#L14-L23]())
-
-First you need to specify which kind of line of transport you want to retrieve. You can have:
-- Bus (transporttype: bus, [bus lines](http://api-ratp.pierre-grimaud.fr/v2/bus/))
-- RER (transporttype: rers, [RER lines](http://api-ratp.pierre-grimaud.fr/v2/rers/))
-- Metro (metros, [metros lines](http://api-ratp.pierre-grimaud.fr/v2/metros/))
-- Noctilien (noctilien, [noctilien lines](http://api-ratp.pierre-grimaud.fr/v2/noctiliens/))
-- Tramway (tramways, [tramways lines](http://api-ratp.pierre-grimaud.fr/v2/tramways/))
-
-Each URL listed before will help you to get the type of the desired line, the ID of the line and even the direction which will be used to build the API URL
-
-Then, you must find the station you want to watch out. You need to find your line API and suffix the URL with the "stations" keyword: [http://api-ratp.pierre-grimaud.fr/v2/[TRANSPORT TYPE]/[TRANSPORT LINE]/stations]()
-
-Example: http://api-ratp.pierre-grimaud.fr/v2/bus/176/stations
-
-The final configuration should look like this
+For config.js , use the following code:
+ ```
+		{
+			module: 'youtube',
+			position: 'lower_third' //used to be lower_third, keep it as module 5
+		},
 ```
-{		       
-     module: 'MMM-Ratp',		        
-     position: 'top_right',			
-     config:{						
-         apiURL:'http://api-ratp.pierre-grimaud.fr/v2/bus/176/stations/5138?destination=pont+de+neuilly' // more info about API documentation : https://github.com/pgrimaud/horaires-ratp-api			
+For my youtube module, it's listed as the 5th module. If you dont know sequence of the module, start counting from the top.
+
+Example :
+```
+	modules: [
+		{
+    			module: 'MMM-Remote-Control' //module 1
+    // uncomment the following line to show the URL of the remote control on the mirror
+    // , position: 'bottom_left'
+    // you can hide this module afterwards from the remote control itself
+		},
+
+		{
+      module: 'MMM-PIR-Sensor', //module 2
+    config: {
+			sensorPIN: 22,
+			relayPIN: false,
+			powerSaving: true,
+			relayOnState: 1
+          }
+         }, 
+
+		{
+			module: 'alert', 
+		},
+		{
+			module: 'clock', //module 3
+			position: 'top_left'
+		},
+		{
+			module: 'calendar', //module 4
+			header: 'SG Holidays',
+			position: 'top_left',
+			config: {
+				calendars: [
+					{
+						symbol: 'calendar-check-o ',
+						url: 
+					}
+				]
+			}
+		},
+		{
+			module: 'youtube', //module 5
+			position: 'lower_third' //used to be lower_third, keep it as module 5
+		},
+```
+
+# Configurating Jopyth's Remote Control module
+I was still using Jopyth's older version of Remote Control module as it appears to be more smoother as compared to his new version.
+Nevertheless here's what you have to change if you are using Jopyth's modules:
+
+This code can be found from line 178 onwards, im not too sure what's the exact line but what you can do is hit crt+f and search for " 'show-all-button' ".
+
+```
+    // edit menu buttons, This is showall
+    'show-all-button': function() {
+        var buttons = document.getElementsByClassName("edit-button");
+        var notification = "PAUSE_VIDEO";
+
+        for (var i = 0; i < buttons.length; i++) {
+                        if (buttons[i].id!="module_5_youtube"){                             // notice that it has some expectional task for module5?
+            buttons[i].className = buttons[i].className.replace("toggled-off", "toggled-on");
+            Remote.showModule(buttons[i].id);
+            Remote.getWithStatus("action=NOTIFICATION&n"+"otification=" + notification );
+                        }
+                        else{
+            buttons[i].className = buttons[i].className.replace("toggled-on", "toggled-off");
+            Remote.getWithStatus("action=NOTIFICATION&n"+"otification=" + notification );
+            Remote.hideModule(buttons[i].id);
+                        }
         }
-}
-```
-
-# Screenshot 
-
-Here are some screenshots
-
-![demo](https://raw.githubusercontent.com/lgmorand/MMM-Ratp/master/screenshots/ratp.png)
+    },
 
 
-# Further information and support 
+    // this is hide all
+    'hide-all-button': function() {
+        var buttons = document.getElementsByClassName("edit-button");
+        var notification = "PLAY_VIDEO";
+        for (var i = 0; i < buttons.length; i++) {
 
-Please use the forum of magic mirror² https://forum.magicmirror.builders/
+            if (buttons[i].id=="module_5_youtube"){
+            buttons[i].className = buttons[i].className.replace("toggled-off", "toggled-on");
+            Remote.showModule(buttons[i].id);
+            Remote.getWithStatus("action=NOTIFICATION&n"+"otification=" + notification );
+            }
+            else{
+            buttons[i].className = buttons[i].className.replace("toggled-on", "toggled-off");
+            Remote.getWithStatus("action=NOTIFICATION&n"+"otification=" + notification );
+            Remote.hideModule(buttons[i].id);
+            }
+        }
+    },
+
+    ```
+    If you are using Jopyth's older version of Remote Control , you have to add these few lines into your code:
+
+https://github.com/Jopyth/MMM-Remote-Control/blob/master/node_helper.js#L658-L676 , This is for node_helper.js
+https://github.com/Jopyth/MMM-Remote-Control/blob/master/MMM-Remote-Control.js#L122-L124 , this is for MMM-REmote-Control.js
+
+
+# Choosing your youtube video
+
+Im using this video as an example : https://www.youtube.com/embed/H1Ej5qMqxxw?enablejsapi=1&autoplay=1
+
+notice `H1Ej5qMqxxw` ? , that's the thing that you will need to change. 
+
+# Fire it up
+
+Go to localhost:8080/remote.html#main-menu and press hide-all ( To play the video) & Show-all ( To pause the video)
+
