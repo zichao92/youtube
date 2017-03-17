@@ -153,6 +153,14 @@ To choose the youtube video set the config option `id`.
 }
 ```
 
+# Changing your youtube video
+
+To change the youtube video you have to send a youtube id via get request `id`.
+
+```
+http://localhost:8080/youtube?id=RvV3nn_de2k
+```
+
 # Fire it up
 
 Go to localhost:8080/remote.html#main-menu and press hide-all ( To play the video) & Show-all ( To pause the video)
