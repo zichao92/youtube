@@ -144,6 +144,7 @@ To choose the youtube video set the config option `id`.
 
 Go to localhost:8080/remote.html#main-menu and press hide-all ( To play the video) & Show-all ( To pause the video)
 
+
 #ScreenShots
 
 Here are some ScreenShots
